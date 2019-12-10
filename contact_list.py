@@ -34,10 +34,18 @@ def add_person(self):
 
 def delete_person(self):
     last_name = input("Enter last name: ")
-    del contact_list[last_name]
+    try:
+        del contact_list[last_name]
+    except:
+        print("Person not in list")
+    
 
 def find_person(self):
-    print("in find")
+    last_name = input("Enter last name: ")
+    try:
+        print(contact_list[last_name])
+    except:
+        print("Person not in list")
 
 def list_all_people(self):
     for key in sorted(contact_list):
