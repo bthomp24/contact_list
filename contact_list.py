@@ -21,12 +21,7 @@ def display_menu():
     E - Exit\n
     Enter Choice:""")
 
-    return ans
-
-# def menu_choice(ans):
-#     print('this is the answer - ' + ans)
-
-#     switcher[ans]
+    return ans.lower()
 
 def add_person(self):
     first_name = input("Enter first name:")
@@ -37,6 +32,19 @@ def add_person(self):
     p = Person(first_name, last_name, number, email)
     contact_list[p.last_name] = p
 
+def delete_person(self):
+    print("in delete")
+
+def find_person(self):
+    print("in find")
+
+def list_all_people(self):
+    print("in list")
+
+def save_list(self):
+    print("in save")
+
+
 if __name__ == "__main__":
     bt = Person("Brandon", "Thompson", "2146688475", "bthomp24@gmail.com")
     contact_list = {
@@ -45,6 +53,10 @@ if __name__ == "__main__":
 
     switcher = {
         'a': add_person,
+        'd': delete_person,
+        'f': find_person,
+        'l': list_all_people,
+        's': save_list,
         'e': "",
     }
 
@@ -53,7 +65,11 @@ if __name__ == "__main__":
         if ans == 'e':
             break
         else:
-            switcher[ans](contact_list)
+            try:
+                func = switcher.get(ans, 'invalid')
+                func(contact_list)
+            except:
+                print("Invalid Input!!")
 
     for x in contact_list:
         print(contact_list[x])
