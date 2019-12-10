@@ -9,7 +9,7 @@ class Person():
         self.email = email
 
     def __str__(self):
-        return f'{self.first_name} {self.last_name}'
+        return f'{self.first_name} {self.last_name}, {self.number}, {self.email}'
 
 def display_menu():
     print("\n\t Main Menu\n")
@@ -23,12 +23,10 @@ def display_menu():
 
     return ans
 
-def menu_choice(ans):
+# def menu_choice(ans):
+#     print('this is the answer - ' + ans)
 
-    switcher = {
-        'a': add_person(contact_list)
-    }
-    switcher.get(ans, "Invalid Input!!")
+#     switcher[ans]
 
 def add_person(self):
     first_name = input("Enter first name:")
@@ -45,8 +43,17 @@ if __name__ == "__main__":
         bt.last_name : bt,
     }
 
-    ans = display_menu()
-    menu_choice(ans)
+    switcher = {
+        'a': add_person,
+        'e': "",
+    }
 
-    for x, y in contact_list.items():
-        print(x, y)
+    while True:
+        ans = display_menu()
+        if ans == 'e':
+            break
+        else:
+            switcher[ans](contact_list)
+
+    for x in contact_list:
+        print(contact_list[x])
