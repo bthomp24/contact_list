@@ -9,7 +9,7 @@ class Person():
         self.email = email
 
     def __str__(self):
-        return f'{self.first_name} {self.last_name}, {self.number}, {self.email}'
+        return f'{self.last_name}, {self.first_name} - {self.number}, {self.email}'
 
 def display_menu():
     print("\n\t Main Menu\n")
@@ -40,7 +40,8 @@ def find_person(self):
     print("in find")
 
 def list_all_people(self):
-    print("in list")
+    for key in sorted(contact_list):
+        print(contact_list[key])
 
 def save_list(self):
     print("in save")
@@ -72,5 +73,3 @@ if __name__ == "__main__":
             except:
                 print("Invalid Input!!")
 
-    for x in contact_list:
-        print(contact_list[x])
