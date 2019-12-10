@@ -39,7 +39,6 @@ def delete_person(self):
     except:
         print("Person not in list")
     
-
 def find_person(self):
     last_name = input("Enter last name: ")
     try:
@@ -52,7 +51,11 @@ def list_all_people(self):
         print(contact_list[key])
 
 def save_list(self):
-    print("in save")
+    f = open("contacts.txt", "w")
+    for key in contact_list:
+        p = contact_list[key]
+        f.write(p.last_name + ',' + p.first_name + ',' + p.number + ',' + p.email + '\n')
+    f.close()
 
 
 if __name__ == "__main__":
