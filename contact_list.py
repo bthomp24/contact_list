@@ -59,10 +59,26 @@ def save_list(self):
 
 
 if __name__ == "__main__":
-    bt = Person("Brandon", "Thompson", "2146688475", "bthomp24@gmail.com")
+    # bt = Person("Brandon", "Thompson", "2146688475", "bthomp24@gmail.com")
+    # contact_list = {
+    #     bt.last_name : bt,
+    # }
     contact_list = {
-        bt.last_name : bt,
+            
     }
+
+    try:
+        f = open("contacts.txt", "r")
+        for line in f:
+            currentline = line.strip().split(",")
+            p = Person(currentline[1], currentline[0], currentline[2], currentline[3])
+            contact_list[p.last_name] = p
+        f.close()
+    except:
+        contact_list = {
+
+        }
+
 
     switcher = {
         'a': add_person,
