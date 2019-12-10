@@ -19,21 +19,22 @@ def display_menu():
     L - List all People
     S - Save List
     E - Exit\n
-    Enter Choice:""")
+    Enter Choice: """)
 
     return ans.lower()
 
 def add_person(self):
-    first_name = input("Enter first name:")
-    last_name = input("Enter last name:")
-    number = input("Enter phone number:")
-    email = input("Enter email address:")
+    first_name = input("Enter first name: ")
+    last_name = input("Enter last name: ")
+    number = input("Enter phone number: ")
+    email = input("Enter email address: ")
 
     p = Person(first_name, last_name, number, email)
     contact_list[p.last_name] = p
 
 def delete_person(self):
-    print("in delete")
+    last_name = input("Enter last name: ")
+    del contact_list[last_name]
 
 def find_person(self):
     print("in find")
