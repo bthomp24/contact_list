@@ -2,6 +2,7 @@
 # Brandon Thompson
 # Contact List for Software Engineering IV Final
 #================================================
+import re
 
 class Person():
     def __init__(self, first_name, last_name, number, email):
@@ -33,15 +34,49 @@ def display_menu():
 # add_person: prompts the user for first name, last name,
 #   number, and email of a person and adds them to the 
 #   contact_list dictionary
+# Also validates number and email inputed by user
 #========================================================
 def add_person(self):
     first_name = input("Enter first name: ")
     last_name = input("Enter last name: ")
-    number = input("Enter phone number: ")
-    email = input("Enter email address: ")
+    while True:
+        number = input("Enter phone number: ")
+        if is_valid_number(number):
+            break
+        else: 
+            print("\nNumber is invalid!")
+            print("Please input another one.\n")
+    
+    while True:
+        email = input("Enter email address: ")
+        if is_valid_email(email):
+            break
+        else: 
+            print("\Email is invalid!")
+            print("Please input another one.\n")
 
     p = Person(first_name, last_name, number, email)
     contact_list[p.last_name] = p
+
+#============================================
+# is_valid_number: validates that the number 
+# the user inputed is a valid number
+#============================================
+def is_valid_number(number):
+    if re.match("[0-9-. ()]", number):
+        return True
+    else:
+        return False
+
+#============================================
+# is_valid_email: validates that the email 
+# the user inputed is a valid email
+#============================================
+def is_valid_email(email):
+    if re.match("^.*(@.+).(.+)", email):
+        return True
+    else:
+        return False
 
 #=========================================================
 # delete_person: prompts the user for the last name of 
@@ -133,4 +168,3 @@ if __name__ == "__main__":
                 func(contact_list)
             except:
                 print("Invalid Input!!")
-
