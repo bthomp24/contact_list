@@ -52,7 +52,7 @@ def add_person(self):
         if is_valid_email(email):
             break
         else: 
-            print("\Email is invalid!")
+            print("\nEmail is invalid!")
             print("Please input another one.\n")
 
     p = Person(first_name, last_name, number, email)
